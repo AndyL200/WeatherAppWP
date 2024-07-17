@@ -1,0 +1,75 @@
+h1 {
+    color:aqua;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+}
+a:active {
+    background-color : blue;
+}
+
+button {
+    border-radius:30px;
+    display:block;
+    margin: 0 auto;
+
+}
+.weatherResponse {
+    
+    word-wrap:break-word;
+}
+body {
+background-image: url('./coffee-shop-1-1520538.jpg');
+background-size:cover;
+
+}
+.bgm {
+    width: 100px;
+    height: 100px;
+    border-radius: 25%;
+    overflow: hidden;
+}
+polygon {
+    fill: rgb(0, 255, 149);
+}
+circle {
+    stroke:aqua;
+    stroke-width: 0.1rem;
+}
+
+
+
+.articleList {
+    display: block;
+    margin: 5% auto 5%; 
+    height: 75%;
+    width:75%;
+}
+.infoView {
+    display:inline-flex;
+    padding:0.5em;
+    margin: 0 1rem auto;
+    font-weight: 100;
+    font-size: large;
+    font-family: "Playwrite AU SA", cursive;
+    color: rgb(0, 255, 149);
+}
+table {
+    border:0.5rem;
+    border-radius: 2px;
+    border-width: 20px;
+    table-layout: fixed;
+    z-index: 3;
+}
+
+.weatherImg {
+    
+}
+
+
+
+html {
+    width:100%;
+}
+

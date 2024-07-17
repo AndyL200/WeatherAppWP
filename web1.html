@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap');
+        </style>
+</head>
+
+<body>
+    <header>
+    <figure>
+    <svg width="100" height="100">
+        <circle cx="50%" cy="50%" r="40"></circle>
+        <polygon points="27,25, 30,80 80,45" class="playBtn" onclick="playMusic()"></polygon>
+    </svg>
+    <figcaption>BGM by Andrew LeClair</figcaption>
+</figure>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+    <script>
+
+        async function mainButnFunc() {
+            var city = ""
+            var IP = "";
+         await fetch("https://api.ipify.org/")
+            .then((response) => response.text())
+            .then((ip) => {
+            IP = ip;
+                    });
+            const xmlHTTPFindLocation = new XMLHttpRequest();
+            xmlHTTPFindLocation.open("GET", `http://api.weatherapi.com/v1/ip.json?key=1863c61a79764cea9d2135128240807&q=${IP}`, true);
+            xmlHTTPFindLocation.send(null);
+            xmlHTTPFindLocation.onreadystatechange = async function () {
+                if (xmlHTTPFindLocation.readyState == 4 && xmlHTTPFindLocation.status == 200) {
+                    var locationData = await JSON.parse(xmlHTTPFindLocation.response);
+                    city = locationData.city;
+                    const xmlHTTPFindWeather = new XMLHttpRequest();
+                    xmlHTTPFindWeather.open("GET", `http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`, true);
+                    xmlHTTPFindWeather.send(null);
+                    xmlHTTPFindWeather.onreadystatechange = async function () {
+                        if (xmlHTTPFindWeather.readyState == 4 && xmlHTTPFindWeather.status == 200) {
+                            const response = await JSON.parse(xmlHTTPFindWeather.response);
+                            document.getElementById('Country').innerText = response.location.country;
+                            document.getElementById('genWeather').innerText = response.current.condition.text;
+                            document.getElementById('weatherImg').setAttribute('src', response.current.condition.icon);
+                            document.getElementById('Time').innerText = response.location.localtime;
+                            document.getElementById('Temperature').innerText = response.current.temp_f;
+
+                        }
+                    }
+                }
+            }
+
+        }
+        var hits = 1;
+        var music = new Audio('First_Score.mp3');
+        function playMusic() {
+            if(music.duration < music.currentTime) {
+                music.currentTime = 0;
+                music.play();
+                hit--;
+            }
+            if(hits%2 == 1) {
+            music.play();
+            }
+            else  {
+            music.pause();
+            // music.currentTime=0;
+            }
+            hits++;
+        }
+    </script>
+    <h1>
+        Up for a coffee run?
+    </h1>
+    <button id="WeatherFindButton" onclick="mainButnFunc()">Let's see</button>
+    <div id="weatherResponse">
+        
+    </div>
+    <div class="articleList">
+
+        <article class="infoView">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Your Country</td>
+                    </tr>
+                    <tr>
+                        <td id = "Country" ></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <article class="infoView">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>General Weather</td>
+                    </tr>
+                    <tr>
+                        <td id = "genWeather"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <article class="infoView">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Current Time</td>
+                </tr>
+                    <tr >
+                        <td id = "Time"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <article class="infoView">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Temp</td>
+                    </tr>
+                    <tr >
+                        <td id = "Temperature"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        <img id = "weatherImg">
+    </div>
+    
+    
+</body>
+
+</html>
