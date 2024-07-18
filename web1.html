@@ -14,7 +14,7 @@
         <h6>Photo by <a href="/photographer/wax115-31362">wax115</a> on <a href="/">Freeimages.com</a></h6>
     <figure id = "bgm">
     <img id = "playIcon" onclick = "playMusic()" width = "50" height = "50" src = "play.svg">
-    
+
     <figcaption>BGM by Andrew LeClair</figcaption>
 </figure>
 
@@ -49,9 +49,8 @@
                         document.getElementById('Temperature').innerText = response2.current.temp_f;         
                 
         }
-
-        var hits = 1;
         var music = new Audio('First_Score.mp3');
+        music.loop = true;
        
         // async function changeOpacity() {
         //     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -64,9 +63,12 @@
 
 
         async function playMusic() {
-            music.loop = true;
-
-            if(hits%2 == 1) {
+            
+            if(music.ended == true) {
+                music.currentTime=0;
+                music.play();
+            }
+            else if(document.getElementById('playIcon').getAttribute('src') == 'play.svg') {
 
             await music.play();
             await document.getElementById('playIcon').setAttribute('src', "pause.svg");
@@ -74,11 +76,12 @@
             
             }
             else  {
+                
             music.pause();
-            document.getElementById('playIcon').setAttribute('src','play.svg')
+            document.getElementById('playIcon').setAttribute('src','play.svg');
+            
             // music.currentTime=0;
             }
-            hits++;
         }
     </script>
     <h1>
