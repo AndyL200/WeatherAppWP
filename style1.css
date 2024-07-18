@@ -2,11 +2,26 @@ h1 {
     color:aqua;
     text-align: center;
 }
-ul {
+
+#pageSelect {
+    margin: 0 0 0 75%;
+    padding:0 0 0 0;
+    display:block;
+    
+}
+#pageSelectList {
     list-style-type: none;
+    
+}
+#pageSelectItem {
+    display:inline-block;
+    margin: 0 5% 0 5%;
 }
 a:active {
     background-color : blue;
+}
+figure {
+    position: fixed;
 }
 
 button {
@@ -19,11 +34,13 @@ button {
     
     word-wrap:break-word;
 }
+
 body {
 background-image: url('./coffee-shop-1-1520538.jpg');
 background-size:cover;
 
 }
+
 
 
 #playIcon {
