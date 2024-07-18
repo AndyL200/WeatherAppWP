@@ -65,12 +65,9 @@
         }
         var hits = 1;
         var music = new Audio('First_Score.mp3');
+       
         function playMusic() {
-            if(music.duration < music.currentTime) {
-                music.currentTime = 0;
-                music.play();
-                hit--;
-            }
+            music.loop = true;
             if(hits%2 == 1) {
             music.play();
             }
