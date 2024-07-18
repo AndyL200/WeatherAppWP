@@ -1,5 +1,5 @@
 h1 {
-    color:aqua;
+    color: #549CBF;
     text-align: center;
 
 }
@@ -48,6 +48,8 @@ figure {
 
 button {
     border-radius:30px;
+    background-color: #806E58;
+    border-color: #403C37;
     display:block;
     margin: 0 auto;
 
@@ -85,6 +87,12 @@ circle {
     margin: 5% auto 5%; 
     height: 75%;
     width:75%;
+    text-align: center;
+
+}
+@keyframes popIn {
+    from {opacity: 0.5 }
+    to {opacity: 1}
 }
 .infoView {
     display:inline-flex;
@@ -94,15 +102,47 @@ circle {
     font-size: large;
     font-family: "Playwrite AU SA", cursive;
     color: rgb(0, 255, 149);
-}
-table {
-    border:0.5rem;
-    border-radius: 2px;
-    border-width: 20px;
-    table-layout: fixed;
-    z-index: 3;
+    
 }
 
+table {
+    border: 2px ridge #403C37;
+    border-radius: 5px;
+    table-layout: fixed;
+    opacity: 0.5;
+    animation: 3s ease-in 1s 2 reverse both paused popIn;
+    z-index: 3;
+    background-color:#52626A;
+    border-radius:5px;
+}
+
+div {
+    display:inline;
+}
+.nerdWatch {
+    display:block;
+    text-align: center;
+
+}
+.windIndex,
+.pressureWatch,
+.heatIndex {
+
+    display: inline-block;
+    margin: 0 0 0 10%;
+    height:10%;
+    width: 10%;
+    border: 2px ridge #403C37;
+    border-radius: 5px;
+    background-color: #52626A;
+}
+
+span {
+    font-size: large;
+    font-family: "Playwrite AU SA", cursive;
+    color: rgb(0, 255, 149);
+    font-weight: 100;
+}
 
 
 

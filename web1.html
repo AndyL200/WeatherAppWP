@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="icon" href="pageFavIcon.png">
     <link rel="stylesheet" href="style1.css">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap');
         </style>
@@ -46,7 +48,10 @@
                         document.getElementById('genWeather').innerText = response2.current.condition.text;
                         document.getElementById('weatherImg').setAttribute('src', response2.current.condition.icon);
                         document.getElementById('Time').innerText = response2.location.localtime;
-                        document.getElementById('Temperature').innerText = response2.current.temp_f;         
+                        document.getElementById('Temperature').innerText = response2.current.temp_f;
+                        document.getElementById('wind').innerText = response2.current.wind_mph;         
+                        document.getElementById('pressure').innerText = response2.current.pressure_mb;         
+                        document.getElementById('heat').innerText = response2.current.heatindex_f;         
                 
         }
         var music = new Audio('First_Score.mp3');
@@ -148,10 +153,26 @@
                 </tbody>
             </table>
         </article>
-        <img id = "weatherImg">
+        
     </div>
-    
-    
+
+    <div name = "Additional Info" class = "nerdWatch">
+        <img id = "weatherImg">
+    <div class = "windIndex">
+        <h2>Wind</h2>
+        <span id = "wind"></span>
+    </div>
+
+    <div class = "pressureWatch">
+        <h2>Pressure</h2>
+        <span id = "pressure"></span>
+    </div>
+
+    <div class = "heatIndex">
+        <h2>Heat Index</h2>
+        <span id="heat"></span>
+    </div>
+</div>
 </body>
 
 </html>
