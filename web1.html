@@ -51,6 +51,7 @@
         }
         var music = new Audio('First_Score.mp3');
         music.loop = true;
+        music.volume = 0.5;
        
         // async function changeOpacity() {
         //     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -64,10 +65,11 @@
 
         async function playMusic() {
             
-            if(music.ended == true) {
-                music.currentTime=0;
-                music.play();
+            if(music.currentTime == music.duration) {
+                music.currentTime = 0;
+                await music.play();
             }
+
             else if(document.getElementById('playIcon').getAttribute('src') == 'play.svg') {
 
             await music.play();
@@ -77,11 +79,12 @@
             }
             else  {
                 
-            music.pause();
-            document.getElementById('playIcon').setAttribute('src','play.svg');
+            await music.pause();
+            await document.getElementById('playIcon').setAttribute('src','play.svg');
             
             // music.currentTime=0;
             }
+            
         }
     </script>
     <h1>
