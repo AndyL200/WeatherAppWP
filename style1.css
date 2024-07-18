@@ -1,7 +1,11 @@
 h1 {
     color:aqua;
     text-align: center;
+
 }
+
+
+
 
 #pageSelect {
     margin: 0 0 0 75%;
@@ -17,23 +21,45 @@ h1 {
     display:inline-block;
     margin: 0 5% 0 5%;
 }
+
 a:active {
     background-color : blue;
 }
+
+
+
+
 figure {
     position: fixed;
+    z-index: 2;
+
 }
+
+#playIcon:hover {
+    opacity: 1;
+}
+
+#playIcon {
+    opacity: 0.5;
+    transition: opacity 2s;
+}
+
+
 
 button {
     border-radius:30px;
     display:block;
     margin: 0 auto;
 
+
 }
 .weatherResponse {
     
     word-wrap:break-word;
 }
+
+
+
 
 body {
 background-image: url('./coffee-shop-1-1520538.jpg');
@@ -43,13 +69,7 @@ background-size:cover;
 
 
 
-#playIcon {
-    opacity: 0.5;
-    transition: opacity 2s;
-}
-#playIcon:hover {
-    opacity: 1;
-}
+
 /* polygon {
     fill: rgb(0, 255, 149);
 }
@@ -83,9 +103,6 @@ table {
     z-index: 3;
 }
 
-.weatherImg {
-    
-}
 
 
 
