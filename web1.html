@@ -33,35 +33,20 @@
         async function mainButnFunc() {
             var city = ""
             var IP = "";
-         await fetch("https://api.ipify.org/")
-            .then((response) => response.text())
-            .then((ip) => {
+            const response1 = await fetch("https://api.ipify.org/");
+            const ip = await response1.text();
             IP = ip;
-                    });
-            const xmlHTTPFindLocation = new XMLHttpRequest();
-            xmlHTTPFindLocation.open("GET", `http://api.weatherapi.com/v1/ip.json?key=1863c61a79764cea9d2135128240807&q=${IP}`, true);
-            xmlHTTPFindLocation.send(null);
-            xmlHTTPFindLocation.onreadystatechange = async function () {
-                if (xmlHTTPFindLocation.readyState == 4 && xmlHTTPFindLocation.status == 200) {
-                    var locationData = await JSON.parse(xmlHTTPFindLocation.response);
-                    city = locationData.city;
-                    const xmlHTTPFindWeather = new XMLHttpRequest();
-                    xmlHTTPFindWeather.open("GET", `http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`, true);
-                    xmlHTTPFindWeather.send(null);
-                    xmlHTTPFindWeather.onreadystatechange = async function () {
-                        if (xmlHTTPFindWeather.readyState == 4 && xmlHTTPFindWeather.status == 200) {
-                            const response = await JSON.parse(xmlHTTPFindWeather.response);
-                            document.getElementById('Country').innerText = response.location.country;
-                            document.getElementById('genWeather').innerText = response.current.condition.text;
-                            document.getElementById('weatherImg').setAttribute('src', response.current.condition.icon);
-                            document.getElementById('Time').innerText = response.location.localtime;
-                            document.getElementById('Temperature').innerText = response.current.temp_f;
-
-                        }
-                    }
-                }
-            }
-
+                const locationResponse = await fetch(`http://api.weatherapi.com/v1/ip.json?key=1863c61a79764cea9d2135128240807&q=${IP}`);
+                const locationData = await locationResponse.json();
+                city = locationData.city;
+                    const weatherResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`);
+                        const response2 = await weatherResponse.json();
+                        document.getElementById('Country').innerText = response2.location.country;
+                        document.getElementById('genWeather').innerText = response2.current.condition.text;
+                        document.getElementById('weatherImg').setAttribute('src', response2.current.condition.icon);
+                        document.getElementById('Time').innerText = response2.location.localtime;
+                        document.getElementById('Temperature').innerText = response2.current.temp_f;         
+                
         }
 
         var hits = 1;
