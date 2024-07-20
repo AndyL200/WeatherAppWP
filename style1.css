@@ -85,10 +85,14 @@ circle {
 .articleList {
     display: block;
     margin: 5% auto 5%; 
-    height: 75%;
-    width:75%;
+    height: 80%;
+    width:80%;
     text-align: center;
 
+}
+td { 
+    padding-left: 5px;
+    padding-right: 5px;
 }
 @keyframes popIn {
     from {opacity: 0.5 }

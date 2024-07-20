@@ -45,6 +45,7 @@
                     const weatherResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`);
                         const response2 = await weatherResponse.json();
                         document.getElementById('Country').innerText = response2.location.country;
+                        document.getElementById('City').innerText = city;
                         document.getElementById('genWeather').innerText = response2.current.condition.text;
                         document.getElementById('weatherImg').setAttribute('src', response2.current.condition.icon);
                         document.getElementById('Time').innerText = response2.location.localtime;
@@ -106,9 +107,11 @@
                 <tbody>
                     <tr>
                         <td>Your Country</td>
+                        <td>Your City</td>
                     </tr>
                     <tr>
                         <td id = "Country" ></td>
+                        <td id = "City"></td>
                     </tr>
                 </tbody>
             </table>
