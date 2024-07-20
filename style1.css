@@ -85,9 +85,10 @@ circle {
 .articleList {
     display: block;
     margin: 5% auto 5%; 
-    height: 80%;
+    height: 25%;
     width:80%;
     text-align: center;
+    /* border: 5px ridge black; */
 
 }
 td { 
