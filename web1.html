@@ -47,9 +47,10 @@
                 const locationResponse = await fetch(`http://api.weatherapi.com/v1/ip.json?key=1863c61a79764cea9d2135128240807&q=${IP}`);
                 const locationData = await locationResponse.json();
                 city = locationData.city;
+                var country = locationData.country_name;
                     const weatherResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`);
                         const response2 = await weatherResponse.json();
-                        document.getElementById('Country').innerText = response2.location.country;
+                        document.getElementById('Country').innerText = country;
                         dynamicArticles('Country');
                         document.getElementById('City').innerText = city;
                         dynamicArticles('City');
