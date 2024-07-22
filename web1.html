@@ -33,6 +33,11 @@
 </header>
     <script>
 
+
+        function dynamicArticles(id) {
+            document.getElementById(id).style.border = '2px solid #403C37';
+            document.getElementById(id).style.borderRadius = '9px';
+        }
         async function mainButnFunc() {
             var city = ""
             var IP = "";
@@ -45,14 +50,22 @@
                     const weatherResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`);
                         const response2 = await weatherResponse.json();
                         document.getElementById('Country').innerText = response2.location.country;
+                        dynamicArticles('Country');
                         document.getElementById('City').innerText = city;
+                        dynamicArticles('City');
                         document.getElementById('genWeather').innerText = response2.current.condition.text;
+                        dynamicArticles('genWeather');
                         document.getElementById('weatherImg').setAttribute('src', response2.current.condition.icon);
                         document.getElementById('Time').innerText = response2.location.localtime;
+                        dynamicArticles('Time');
                         document.getElementById('Temperature').innerText = response2.current.temp_f + "F";
-                        document.getElementById('wind').innerText = response2.current.wind_mph + " mph";         
-                        document.getElementById('pressure').innerText = response2.current.pressure_mb + "mb";         
-                        document.getElementById('heat').innerText = response2.current.heatindex_f + "F";         
+                        dynamicArticles('Temperature');
+                        document.getElementById('wind').innerText = response2.current.wind_mph + " mph"; 
+                        dynamicArticles('wind');        
+                        document.getElementById('pressure').innerText = response2.current.pressure_mb + "mb";     
+                        dynamicArticles('pressure');    
+                        document.getElementById('heat').innerText = response2.current.heatindex_f + "F";   
+                        dynamicArticles('heat');      
                 
         }
         var music = new Audio('BGMScore.mp3');
