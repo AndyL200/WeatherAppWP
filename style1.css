@@ -18,8 +18,8 @@ html {
 
 body {
     background-image: url('./coffee-shop-1-1520538.jpg');
-    object-fit: cover;
-    background-repeat: none;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
 
 }

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="pageFavIcon.png">
     <link rel="stylesheet" href="style1.css">
 
@@ -16,7 +17,8 @@
         <h6>Photo by <a href="https://www.freeimages.com/photographer/wax115-31362/42">wax115</a> on <a
                 href="https://www.freeimages.com/photo/coffee-shop-1-1520538">Freeimages.com</a></h6>
         <figure id="bgm">
-            <img id="playIcon" onclick="playMusic()" width="50px" height="50px" src="play.svg">
+            <img id="playIcon" width="50px" height="50px"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK72sfif3Gn8OC8TkO45ejyEuWLJ6vzDXOuQ&s">
 
             <figcaption>Rate for full length bgm</figcaption>
         </figure>
@@ -32,84 +34,7 @@
             </ul>
         </nav>
     </header>
-    <script>
 
-
-        function dynamicArticles(id) {
-            document.getElementById(id).style.border = '2px solid rgba(64, 60, 55, 0.5)';
-            document.getElementById(id).style.borderRadius = '9px';
-        }
-        async function mainButnFunc() {
-            var city = ""
-            var IP = "";
-            const response1 = await fetch("https://api.ipify.org/");
-            const ip = await response1.text();
-            IP = ip;
-            const locationResponse = await fetch(`http://api.weatherapi.com/v1/ip.json?key=1863c61a79764cea9d2135128240807&q=${IP}`);
-            const locationData = await locationResponse.json();
-            city = locationData.city;
-            var country = locationData.country_name;
-            const weatherResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`);
-            const response2 = await weatherResponse.json();
-            document.getElementById('Country').innerText = country;
-            dynamicArticles('Country');
-            document.getElementById('City').innerText = city;
-            dynamicArticles('City');
-            document.getElementById('genWeather').innerText = response2.current.condition.text;
-            dynamicArticles('genWeather');
-            const wImg = document.getElementById('weatherImg');
-            wImg.style.flex = 1;
-            wImg.setAttribute('src', response2.current.condition.icon);
-            document.getElementById('Time').innerText = response2.location.localtime;
-            dynamicArticles('Time');
-            document.getElementById('Temperature').innerText = response2.current.temp_f + "F";
-            dynamicArticles('Temperature');
-            document.getElementById('wind').innerText = response2.current.wind_mph + " mph";
-            dynamicArticles('wind');
-            document.getElementById('pressure').innerText = response2.current.pressure_mb + "mb";
-            dynamicArticles('pressure');
-            document.getElementById('heat').innerText = response2.current.heatindex_f + "F";
-            dynamicArticles('heat');
-
-        }
-        var music = new Audio('betterbgm.mp3');
-        music.volume = 0.5;
-
-
-        // async function changeOpacity() {
-        //     await new Promise(resolve => setTimeout(resolve, 1000));
-
-        //     for(i = 0; i < 10; i++) {
-        //         await document.getElementById('playIcon').changeOpacity(i/10);
-        //     }
-        // }
-        //may come back to this
-
-
-        async function playMusic() {
-
-            if (music.currentTime == music.duration) {
-                music.currentTime = 0;
-                await music.play();
-            }
-
-            else if (document.getElementById('playIcon').getAttribute('src') == 'play.svg') {
-
-                await music.play();
-                await document.getElementById('playIcon').setAttribute('src', "pause.svg");
-                // await changeOpacity();
-
-            }
-            else {
-
-                await music.pause();
-                await document.getElementById('playIcon').setAttribute('src', 'play.svg');
-
-                // music.currentTime=0;
-            }
-
-        }
-    </script>
     <h1>
         Up for a coffee run?
     </h1>
@@ -193,6 +118,92 @@
             <span id="heat"></span>
         </div>
     </div>
+
+
+    <script>
+
+
+
+
+
+        function dynamicArticles(id) {
+            document.getElementById(id).style.border = '2px solid rgba(64, 60, 55, 0.5)';
+            document.getElementById(id).style.borderRadius = '9px';
+        }
+        async function mainButnFunc() {
+            var city = ""
+            var IP = "";
+            const response1 = await fetch("https://api.ipify.org/");
+            const ip = await response1.text();
+            IP = ip;
+            const locationResponse = await fetch(`http://api.weatherapi.com/v1/ip.json?key=1863c61a79764cea9d2135128240807&q=${IP}`);
+            const locationData = await locationResponse.json();
+            city = locationData.city;
+            var country = locationData.country_name;
+            const weatherResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`);
+            const response2 = await weatherResponse.json();
+            document.getElementById('Country').innerText = country;
+            dynamicArticles('Country');
+            document.getElementById('City').innerText = city;
+            dynamicArticles('City');
+            document.getElementById('genWeather').innerText = response2.current.condition.text;
+            dynamicArticles('genWeather');
+            const wImg = document.getElementById('weatherImg');
+            wImg.style.flex = 1;
+            wImg.setAttribute('src', response2.current.condition.icon);
+            document.getElementById('Time').innerText = response2.location.localtime;
+            dynamicArticles('Time');
+            document.getElementById('Temperature').innerText = response2.current.temp_f + "F";
+            dynamicArticles('Temperature');
+            document.getElementById('wind').innerText = response2.current.wind_mph + " mph";
+            dynamicArticles('wind');
+            document.getElementById('pressure').innerText = response2.current.pressure_mb + "mb";
+            dynamicArticles('pressure');
+            document.getElementById('heat').innerText = response2.current.heatindex_f + "F";
+            dynamicArticles('heat');
+
+        }
+        var music = new Audio('betterbgm.mp3');
+        music.volume = 0.5;
+
+        document.getElementById('playIcon').addEventListener('click', playMusic);
+
+
+        music.addEventListener('ended', () => {
+            document.getElementById('playIcon').setAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK72sfif3Gn8OC8TkO45ejyEuWLJ6vzDXOuQ&s');
+        })
+
+        // async function changeOpacity() {
+        //     await new Promise(resolve => setTimeout(resolve, 1000));
+
+        //     for(i = 0; i < 10; i++) {
+        //         await document.getElementById('playIcon').changeOpacity(i/10);
+        //     }
+        // }
+        //may come back to this
+
+
+        async function playMusic() {
+
+            let playIcon = document.getElementById('playIcon');
+
+            if (playIcon.getAttribute('src') == 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK72sfif3Gn8OC8TkO45ejyEuWLJ6vzDXOuQ&s') {
+
+                await music.play();
+                await playIcon.setAttribute('src', "https://banner2.cleanpng.com/20180417/xpe/avfo23ppf.webp");
+                // await changeOpacity();
+
+            }
+            else {
+
+                await music.pause();
+                await playIcon.setAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK72sfif3Gn8OC8TkO45ejyEuWLJ6vzDXOuQ&s');
+
+                // music.currentTime=0;
+            }
+
+        }
+    </script>
 </body>
 
 </html>
