@@ -5,32 +5,33 @@
     <meta charset="utf-8">
     <link rel="icon" href="pageFavIcon.png">
     <link rel="stylesheet" href="style1.css">
-    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap');
-        </style>
+    </style>
 </head>
 
 <body>
     <header>
-        <h6>Photo by <a href="/photographer/wax115-31362">wax115</a> on <a href="/">Freeimages.com</a></h6>
-    <figure id = "bgm">
-    <img id = "playIcon" onclick = "playMusic()" width = "50" height = "50" src = "play.svg">
+        <h6>Photo by <a href="https://www.freeimages.com/photographer/wax115-31362/42">wax115</a> on <a
+                href="https://www.freeimages.com/photo/coffee-shop-1-1520538">Freeimages.com</a></h6>
+        <figure id="bgm">
+            <img id="playIcon" onclick="playMusic()" width="50px" height="50px" src="play.svg">
 
-    <figcaption>BGM by Andrew LeClair</figcaption>
-</figure>
+            <figcaption>Rate for full length bgm</figcaption>
+        </figure>
 
-    <nav id = 'pageSelect'>
-        <ul id = 'pageSelectList'>
-            <li id = 'pageSelectItem'>
-                <a href="/">Home</a>
-            </li>
-            <li id = 'pageSelectItem'>
-                <a href="about.html">About</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+        <nav id='pageSelect'>
+            <ul id='pageSelectList'>
+                <li id='pageSelectItem'>
+                    <a href="/">Home</a>
+                </li>
+                <li id='pageSelectItem'>
+                    <a href="about.html">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <script>
 
 
@@ -44,36 +45,37 @@
             const response1 = await fetch("https://api.ipify.org/");
             const ip = await response1.text();
             IP = ip;
-                const locationResponse = await fetch(`http://api.weatherapi.com/v1/ip.json?key=1863c61a79764cea9d2135128240807&q=${IP}`);
-                const locationData = await locationResponse.json();
-                city = locationData.city;
-                var country = locationData.country_name;
-                    const weatherResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`);
-                        const response2 = await weatherResponse.json();
-                        document.getElementById('Country').innerText = country;
-                        dynamicArticles('Country');
-                        document.getElementById('City').innerText = city;
-                        dynamicArticles('City');
-                        document.getElementById('genWeather').innerText = response2.current.condition.text;
-                        dynamicArticles('genWeather');
-                        document.getElementById('weatherImg').setAttribute('src', response2.current.condition.icon);
-                        document.getElementById('Time').innerText = response2.location.localtime;
-                        dynamicArticles('Time');
-                        document.getElementById('Temperature').innerText = response2.current.temp_f + "F";
-                        dynamicArticles('Temperature');
-                        document.getElementById('wind').innerText = response2.current.wind_mph + " mph"; 
-                        dynamicArticles('wind');        
-                        document.getElementById('pressure').innerText = response2.current.pressure_mb + "mb";     
-                        dynamicArticles('pressure');    
-                        document.getElementById('heat').innerText = response2.current.heatindex_f + "F";   
-                        dynamicArticles('heat');      
-                
+            const locationResponse = await fetch(`http://api.weatherapi.com/v1/ip.json?key=1863c61a79764cea9d2135128240807&q=${IP}`);
+            const locationData = await locationResponse.json();
+            city = locationData.city;
+            var country = locationData.country_name;
+            const weatherResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=1863c61a79764cea9d2135128240807&q=${city}`);
+            const response2 = await weatherResponse.json();
+            document.getElementById('Country').innerText = country;
+            dynamicArticles('Country');
+            document.getElementById('City').innerText = city;
+            dynamicArticles('City');
+            document.getElementById('genWeather').innerText = response2.current.condition.text;
+            dynamicArticles('genWeather');
+            const wImg = document.getElementById('weatherImg');
+            wImg.style.flex = 1;
+            wImg.setAttribute('src', response2.current.condition.icon);
+            document.getElementById('Time').innerText = response2.location.localtime;
+            dynamicArticles('Time');
+            document.getElementById('Temperature').innerText = response2.current.temp_f + "F";
+            dynamicArticles('Temperature');
+            document.getElementById('wind').innerText = response2.current.wind_mph + " mph";
+            dynamicArticles('wind');
+            document.getElementById('pressure').innerText = response2.current.pressure_mb + "mb";
+            dynamicArticles('pressure');
+            document.getElementById('heat').innerText = response2.current.heatindex_f + "F";
+            dynamicArticles('heat');
+
         }
-        var music = new Audio('BGMScore.mp3');
-        music.loop = true;
+        var music = new Audio('betterbgm.mp3');
         music.volume = 0.5;
-        
-       
+
+
         // async function changeOpacity() {
         //     await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -85,27 +87,27 @@
 
 
         async function playMusic() {
-            
-            if(music.currentTime == music.duration) {
+
+            if (music.currentTime == music.duration) {
                 music.currentTime = 0;
                 await music.play();
             }
 
-            else if(document.getElementById('playIcon').getAttribute('src') == 'play.svg') {
+            else if (document.getElementById('playIcon').getAttribute('src') == 'play.svg') {
 
-            await music.play();
-            await document.getElementById('playIcon').setAttribute('src', "pause.svg");
-            // await changeOpacity();
-            
+                await music.play();
+                await document.getElementById('playIcon').setAttribute('src', "pause.svg");
+                // await changeOpacity();
+
             }
-            else  {
-                
-            await music.pause();
-            await document.getElementById('playIcon').setAttribute('src','play.svg');
-            
-            // music.currentTime=0;
+            else {
+
+                await music.pause();
+                await document.getElementById('playIcon').setAttribute('src', 'play.svg');
+
+                // music.currentTime=0;
             }
-            
+
         }
     </script>
     <h1>
@@ -113,7 +115,7 @@
     </h1>
     <button id="WeatherFindButton" onclick="mainButnFunc()">Let's see</button>
     <div id="weatherResponse">
-        
+
     </div>
     <div class="articleList">
 
@@ -125,8 +127,8 @@
                         <td>Your City</td>
                     </tr>
                     <tr>
-                        <td id = "Country" ></td>
-                        <td id = "City"></td>
+                        <td id="Country"></td>
+                        <td id="City"></td>
                     </tr>
                 </tbody>
             </table>
@@ -139,7 +141,7 @@
                         <td>General Weather</td>
                     </tr>
                     <tr>
-                        <td id = "genWeather"></td>
+                        <td id="genWeather"></td>
                     </tr>
                 </tbody>
             </table>
@@ -150,9 +152,9 @@
                 <tbody>
                     <tr>
                         <td>Current Time</td>
-                </tr>
-                    <tr >
-                        <td id = "Time"></td>
+                    </tr>
+                    <tr>
+                        <td id="Time"></td>
                     </tr>
                 </tbody>
             </table>
@@ -164,33 +166,33 @@
                     <tr>
                         <td>Temp</td>
                     </tr>
-                    <tr >
-                        <td id = "Temperature"></td>
+                    <tr>
+                        <td id="Temperature"></td>
 
                     </tr>
                 </tbody>
             </table>
         </article>
-        
+
     </div>
 
-    <div name = "Additional Info" class = "nerdWatch">
-        <img id = "weatherImg">
-    <div class = "windIndex">
-        <h2>Wind</h2>
-        <span id = "wind"></span>
-    </div>
+    <div name="Additional Info" class="additional">
+        <img id="weatherImg">
+        <div class="windIndex">
+            <h2>Wind</h2>
+            <span id="wind"></span>
+        </div>
 
-    <div class = "pressureWatch">
-        <h2>Pressure</h2>
-        <span id = "pressure"></span>
-    </div>
+        <div class="pressureWatch">
+            <h2>Pressure</h2>
+            <span id="pressure"></span>
+        </div>
 
-    <div class = "heatIndex">
-        <h2>Heat Index</h2>
-        <span id="heat"></span>
+        <div class="heatIndex">
+            <h2>Heat Index</h2>
+            <span id="heat"></span>
+        </div>
     </div>
-</div>
 </body>
 
 </html>

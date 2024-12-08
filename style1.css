@@ -1,3 +1,32 @@
+/*
+page outline
+*/
+* {
+    box-sizing: border-box;
+
+}
+
+html {
+    width: 100%;
+    font-size: large;
+    font-family: "Playwrite AU SA";
+    color: rgb(0, 255, 149);
+    font-weight: 100;
+
+}
+
+
+body {
+    background-image: url('./coffee-shop-1-1520538.jpg');
+    object-fit: cover;
+    background-repeat: none;
+    background-size: cover;
+
+}
+
+
+
+
 h1 {
     color: #549CBF;
     text-align: center;
@@ -5,28 +34,32 @@ h1 {
 }
 
 
-
+/*
+*page headers
+*/
 
 #pageSelect {
-    margin: 0 0 0 75%;
-    padding:0 0 0 0;
-    display:block;
-    
+    position: absolute;
+    left: 75%;
+    top: 0;
+    padding: 0 0 0 0;
+    display: block;
+
 }
+
 #pageSelectList {
     list-style-type: none;
-    
+
 }
+
 #pageSelectItem {
-    display:inline-block;
+    display: flex;
     margin: 0 5% 0 5%;
 }
 
 a:active {
-    background-color : blue;
+    background-color: blue;
 }
-
-
 
 
 figure {
@@ -45,119 +78,110 @@ figure {
 }
 
 
-
+/*Find weather button*/
 button {
-    border-radius:30px;
+    border-radius: 30px;
     background-color: #806E58;
     border-color: #403C37;
-    display:block;
+    display: block;
     margin: 0 auto;
 
 
 }
+
+
+/*JavaScript DOM Element with weatherAPI output*/
 .weatherResponse {
-    
-    word-wrap:break-word;
+
+    word-wrap: break-word;
 }
 
 
 
 
-body {
-background-image: url('./coffee-shop-1-1520538.jpg');
-background-size:cover;
-
-}
 
 
-
-
-/* polygon {
+/*svg*/
+polygon {
     fill: rgb(0, 255, 149);
 }
+
 circle {
-    stroke:aqua;
+    stroke: aqua;
     stroke-width: 0.1rem;
-} */
+}
 
 
-
+/*Output tile list*/
 .articleList {
-    display: block;
-    margin: 5% auto 5%; 
-    height: 5rem;
-    width:100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    min-height: 5rem;
+    width: 100%;
+    margin: 5px 5px 5px 5px;
     text-align: center;
-    /* border: 5px ridge black; */
-
-}
-td { 
-    padding-left: 5px;
-    padding-right: 5px;
-    background-blend-mode: screen;
+    justify-content: center;
 }
 
+.articleList .infoView {
+    width: 24%;
+    margin: auto;
 
-@keyframes popIn {
-    from {opacity: 0.5 }
-    to {opacity: 1}
-}
-.infoView {
-    display:inline-flex;
-    padding:0.5em;
-    margin: 0 1rem auto;
-    font-weight: 100;
     font-size: large;
-    font-family: "Playwrite AU SA", cursive;
     color: rgb(0, 255, 149);
-    
+
 }
 
-table {
+
+
+.infoView table {
     border-radius: 5px;
     table-layout: fixed;
     opacity: 0.5;
     animation: 3s ease-in 1s 2 reverse both paused popIn;
     z-index: 3;
-    background-image: linear-gradient(rgba(59, 158, 211, 0.5), #52626A);
-    border-radius:5px;
+    background-image: linear-gradient(rgba(59, 158, 211), #52626A);
+    width: 100%;
+    border-radius: 5px;
 }
 
-div {
-    display:inline-block;
-    z-index:3;
+.infoView table td {
+    padding-left: 5px;
+    padding-right: 5px;
 }
-.nerdWatch {
-    display:block;
+
+.additional {
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+
+.additional div {
+    flex: 1;
+    border-radius: 2%;
+    margin: 0 5%;
     text-align: center;
+}
 
+
+/*svg animation*/
+@keyframes popIn {
+    from {
+        opacity: 0.5
+    }
+
+    to {
+        opacity: 1
+    }
 }
-.nerdWatch h2 {
-    margin: 0 0 0 0;
-}
+
+
 .windIndex,
 .pressureWatch,
 .heatIndex {
-
-    display: inline-block;
-    margin: 0 0 0 10%;
-    height:5rem;
-    width: 7.5rem;
-    border-radius: 5px;
-    background-image: linear-gradient(#3b9ed3, transparent, #52626A);
-    background-blend-mode: screen;
+    background-image: linear-gradient(#3b9ed3, #52626A);
+    box-shadow: 0 3px 5px black;
 }
-
-span {
-    font-size: large;
-    font-family: "Playwrite AU SA", cursive;
-    color: rgb(0, 255, 149);
-    font-weight: 100;
-}
-
-
-
-html {
-    width:100%;
-}
-
